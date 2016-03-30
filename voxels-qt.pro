@@ -298,7 +298,7 @@ isEmpty(BOOST_THREAD_LIB_SUFFIX) {
 }
 
 isEmpty(BDB_LIB_PATH) {
-    macx:BDB_LIB_PATH = /opt/local/lib/db48
+    macx:BDB_LIB_PATH = /usr/local/BerkeleyDB.4.8/lib
 }
 
 isEmpty(BDB_LIB_SUFFIX) {
@@ -306,15 +306,23 @@ isEmpty(BDB_LIB_SUFFIX) {
 }
 
 isEmpty(BDB_INCLUDE_PATH) {
-    macx:BDB_INCLUDE_PATH = /opt/local/include/db48
+    macx:BDB_INCLUDE_PATH = /usr/local/BerkeleyDB.4.8/include
 }
 
 isEmpty(BOOST_LIB_PATH) {
-    macx:BOOST_LIB_PATH = /opt/local/lib
+    macx:BOOST_LIB_PATH = /usr/local/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
-    macx:BOOST_INCLUDE_PATH = /opt/local/include
+    macx:BOOST_INCLUDE_PATH = /usr/local/include
+}
+
+isEmpty(OPENSSL_INCLUDE_PATH) {
+    macx:OPENSSL_INCLUDE_PATH = /usr/local/opt/openssl/include
+}
+
+isEmpty(OPENSSL_LIB_PATH) {
+    macx:OPENSSL_LIB_PATH = /usr/local/opt/openssl/lib
 }
 
 windows:LIBS += -lshlwapi
@@ -341,7 +349,7 @@ macx:HEADERS += src/qt/macdockiconhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/bitcoin.icns
+macx:ICON = src/qt/res/icons/voxels.icns
 macx:TARGET = "Voxels-Qt"
 
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
