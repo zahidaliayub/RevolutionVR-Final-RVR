@@ -1146,9 +1146,8 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-	{"Uphold", "dnsseed.uphold.com"},
-	{"main1",   "52.21.76.7"},
-	{"main2",  "52.200.69.159"},
+	{"main1", "108.170.20.78"},
+	{"main2", "66.85.173.32"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
