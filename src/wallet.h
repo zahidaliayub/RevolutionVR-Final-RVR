@@ -7,6 +7,7 @@
 #ifndef BITCOIN_WALLET_H
 #define BITCOIN_WALLET_H
 
+#include "base58.h"
 #include "main.h"
 #include "key.h"
 #include "keystore.h"
@@ -164,6 +165,8 @@ public:
     void ReturnKey(int64 nIndex);
     bool GetKeyFromPool(CPubKey &key, bool fAllowReuse=true);
     int64 GetOldestKeyPoolTime();
+    std::set< std::set<std::string> > GetAddressGroupings();
+    std::map<std::string, int64> GetAddressBalances();
     void GetAllReserveKeys(std::set<CKeyID>& setAddress);
 
     bool IsMine(const CTxIn& txin) const;
@@ -592,6 +595,13 @@ public:
             }
         }
         return true;
+    }
+
+    std::string GetAddressOfTxOut(int n)
+    {
+        CTxDestination addr;
+        ExtractDestination(vout[n].scriptPubKey, addr);
+        return CBitcoinAddress(addr).ToString();
     }
 
     bool WriteToDisk();

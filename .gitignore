@@ -1,0 +1,4 @@
+src/voxelsd
+*.DS_Store
+Vagrantfile
+.vagrant/
