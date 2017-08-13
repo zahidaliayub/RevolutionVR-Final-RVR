@@ -1148,6 +1148,8 @@ void MapPort()
 static const char *strDNSSeed[][2] = {
 	{"main1", "108.170.20.78"},
 	{"main2", "66.85.173.32"},
+	{"main3", "45.55.19.32"},
+	{"main4", "178.62.28.182"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
