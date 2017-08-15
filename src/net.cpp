@@ -1150,6 +1150,8 @@ static const char *strDNSSeed[][2] = {
 	{"main2", "66.85.173.32"},
 	{"main3", "45.55.19.32"},
 	{"main4", "178.62.28.182"},
+	{"main5", "192.241.153.115"},
+	{"main6", "178.62.70.165"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
