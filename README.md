@@ -45,7 +45,7 @@ See http://opensource.org/licenses/MIT/ for more information.
 Development process
 -------------------
 
-Futher Developers work is handled by Jim Blasko (jimblasko@yahoo.com) and the Voxels Team. 
+Futher Developers work is handled by Michael Wheeler, Martin Repetto & Jonathan Heald longside the Voxelus Team, Email community@voxelus.com
 
 If it is a simple/trivial/non-controversial change, then one of the Voxels
 development team members simply pulls it.
