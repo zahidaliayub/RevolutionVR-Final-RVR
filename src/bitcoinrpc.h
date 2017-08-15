@@ -72,4 +72,7 @@ public:
 
 extern const CRPCTable tableRPC;
 
+extern json_spirit::Value addnode(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value getaddednodeinfo(const json_spirit::Array& params, bool fHelp);
+
 #endif
