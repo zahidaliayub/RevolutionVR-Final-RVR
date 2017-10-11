@@ -7,7 +7,8 @@
 # Originally by Laszlo Hanyecz (solar@heliacal.net)
 
 CXX=llvm-g++
-DEPSDIR=/usr/local
+DEPSDIR=/usr/local/Cellar
+BOOSTDIR=/Users/jonn4y/git/MindCoin/boost_1_48_0/
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
@@ -30,13 +31,13 @@ TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 ifdef STATIC
 # Build STATIC if you are redistributing the voxelsd binary
 TESTLIBS += \
- $(DEPSDIR)/lib/libboost_unit_test_framework-mt.a
+ $(BOOSTDIR)/lib/libboost_unit_test_framework-mt.a
 LIBS += \
  $(DEPSDIR)/BerkeleyDB.4.8/lib/libdb_cxx-4.8.a \
- $(DEPSDIR)/lib/libboost_system-mt.a \
- $(DEPSDIR)/lib/libboost_filesystem-mt.a \
- $(DEPSDIR)/lib/libboost_program_options-mt.a \
- $(DEPSDIR)/lib/libboost_thread-mt.a \
+ $(BOOSTDIR)/lib/libboost_system-mt.a \
+ $(BOOSTDIR)/lib/libboost_filesystem-mt.a \
+ $(BOOSTDIR)/lib/libboost_program_options-mt.a \
+ $(BOOSTDIR)/lib/libboost_thread-mt.a \
  $(DEPSDIR)/opt/openssl/lib/libssl.a \
  $(DEPSDIR)/opt/openssl/lib/libcrypto.a \
  -lz
