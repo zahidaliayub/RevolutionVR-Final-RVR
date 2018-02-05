@@ -1719,10 +1719,10 @@ bool BindListenPort(const CService &addrBind, string& strError)
     if (addrBind.IsIPv6()) {
 #ifdef IPV6_V6ONLY
     #ifdef WIN32
-            setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (const char)&nOne, sizeof(int));
-    #else
-            setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (void*)&nOne, sizeof(int));
-    #endif
+			setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&nOne, sizeof(int));
+	#else
+			setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (void*)&nOne, sizeof(int));
+	#endif
 #endif
 #ifdef WIN32
         int nProtLevel = 10 /* PROTECTION_LEVEL_UNRESTRICTED */;
