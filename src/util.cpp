@@ -994,7 +994,7 @@ boost::filesystem::path GetDefaultDataDir()
     return pathRet / "Voxels";
 #else
     // Unix
-    return pathRet / ".Voxels";
+    return pathRet / ".voxels";
 #endif
 #endif
 }
@@ -1036,7 +1036,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "Voxels.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "voxels.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
     return pathConfigFile;
 }
