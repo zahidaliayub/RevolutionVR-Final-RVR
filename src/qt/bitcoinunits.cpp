@@ -34,9 +34,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("VOX");
-    case mBTC: return QString("mVOX");
-    case uBTC: return QString("uVOX");
+    case BTC: return QString("RVR");
+    case mBTC: return QString("mRVR");
+    case uBTC: return QString("uRVR");
     default: return QString("???");
     }
 }
@@ -45,9 +45,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("Voxelss");
-    case mBTC: return QString("Milli-Voxelss (1 / 1,000)");
-    case uBTC: return QString("Micro-Voxelss (1 / 1,000,000)");
+    case BTC: return QString("RevolutionVRs");
+    case mBTC: return QString("Milli-RevolutionVRs (1 / 1,000)");
+    case uBTC: return QString("Micro-RevolutionVRs (1 / 1,000,000)");
     default: return QString("???");
     }
 }

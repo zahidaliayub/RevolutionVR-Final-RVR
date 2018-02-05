@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2011-2013-2015 Voxels Developers
+// Copyright (c) 2011-2013-2015 RevolutionVR Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -31,7 +31,7 @@ unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 uint256 hashGenesisBlock("0xbfdda5aeef5636603269447c47824950975f0d1218dac99143961b29f4c89ce4");
-static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Voxels: starting difficulty is 1 / 2^12
+static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // RevolutionVR: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 CBigNum bnBestChainWork = 0;
@@ -51,7 +51,7 @@ map<uint256, map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Voxels Signed Message:\n";
+const string strMessageMagic = "RevolutionVR Signed Message:\n";
 
 double dHashesPerSec;
 int64 nHPSTimerStart;
@@ -830,7 +830,7 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = .000001 * COIN;
-    nSubsidy >>= (nHeight / 500000000); // Voxels: 500m blocks
+    nSubsidy >>= (nHeight / 500000000); // RevolutionVR: 500m blocks
     if(nHeight < 3){
 	nSubsidy = 104999775 * COIN; // Full Premine
     }
@@ -1259,7 +1259,7 @@ bool CTransaction::ConnectInputs(MapPrevTx inputs,
 {
     // Take over previous transactions' spent pointers
     // fBlock is true when this is called from AcceptBlock when a new best-block is added to the blockchain
-    // fMiner is true when called from the internal voxels miner
+    // fMiner is true when called from the internal RevolutionVR miner
     // ... both are false when called from CTransaction::AcceptToMemoryPool
     if (!IsCoinBase())
     {
@@ -2039,7 +2039,7 @@ bool CheckDiskSpace(uint64 nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        uiInterface.ThreadSafeMessageBox(strMessage, "Voxels", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
+        uiInterface.ThreadSafeMessageBox(strMessage, "RevolutionVR", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
         StartShutdown();
         return false;
     }
@@ -2516,7 +2516,7 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ascii, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xfc, 0xd9, 0xb7, 0xdd }; // Voxels: increase each by adding 2 to bitcoin's value.
+unsigned char pchMessageStart[4] = { 0xfc, 0xd9, 0xb7, 0xdd }; // RevolutionVR: increase each by adding 2 to bitcoin's value.
 
 
 bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
@@ -3427,7 +3427,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// VoxelsMiner
+// RevolutionVRMiner
 //
 
 int static FormatHashBlocks(void* pbuffer, unsigned int len)
@@ -3631,7 +3631,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey)
                 continue;
 
             // Transaction fee required depends on block size
-            // Voxelsd: Reduce the exempted free transactions to 500 bytes (from Bitcoin's 3000 bytes)
+            // RevolutionVRd: Reduce the exempted free transactions to 500 bytes (from Bitcoin's 3000 bytes)
             bool fAllowFree = (nBlockSize + nTxSize < 1500 || CTransaction::AllowFree(dPriority));
             int64 nMinFee = tx.GetMinFee(nBlockSize, fAllowFree, GMF_BLOCK);
 
@@ -3769,7 +3769,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
         return false;
 
     //// debug print
-    printf("VoxelsMiner:\n");
+    printf("RevolutionVRMiner:\n");
     printf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", hash.GetHex().c_str(), hashTarget.GetHex().c_str());
     pblock->print();
     printf("generated %s\n", FormatMoney(pblock->vtx[0].vout[0].nValue).c_str());
@@ -3778,7 +3778,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     {
         LOCK(cs_main);
         if (pblock->hashPrevBlock != hashBestChain)
-            return error("VoxelsMiner : generated block is stale");
+            return error("RevolutionVRMiner : generated block is stale");
 
         // Remove key from key pool
         reservekey.KeepKey();
@@ -3791,21 +3791,21 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
 
         // Process this block the same as if we had received it from another node
         if (!ProcessBlock(NULL, pblock))
-            return error("VoxelsMiner : ProcessBlock, block not accepted");
+            return error("RevolutionVRMiner : ProcessBlock, block not accepted");
     }
 
     return true;
 }
 
-void static ThreadVoxelsMiner(void* parg);
+void static ThreadRevolutionVRMiner(void* parg);
 
 static bool fGenerateBitcoins = false;
 static bool fLimitProcessors = false;
 static int nLimitProcessors = -1;
 
-void static VoxelsMiner(CWallet *pwallet)
+void static RevolutionVRMiner(CWallet *pwallet)
 {
-    printf("VoxelsMiner started\n");
+    printf("RevolutionVRMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
     // Make this thread recognisable as the mining thread
@@ -3840,7 +3840,7 @@ void static VoxelsMiner(CWallet *pwallet)
             return;
         IncrementExtraNonce(pblock.get(), pindexPrev, nExtraNonce);
 
-        printf("Running VoxelsMiner with %d transactions in block\n", pblock->vtx.size());
+        printf("Running RevolutionVRMiner with %d transactions in block\n", pblock->vtx.size());
 
 
         //
@@ -3947,26 +3947,26 @@ void static VoxelsMiner(CWallet *pwallet)
     }
 }
 
-void static ThreadVoxelsMiner(void* parg)
+void static ThreadRevolutionVRMiner(void* parg)
 {
     CWallet* pwallet = (CWallet*)parg;
     try
     {
         vnThreadsRunning[THREAD_MINER]++;
-        VoxelsMiner(pwallet);
+        RevolutionVRMiner(pwallet);
         vnThreadsRunning[THREAD_MINER]--;
     }
     catch (std::exception& e) {
         vnThreadsRunning[THREAD_MINER]--;
-        PrintException(&e, "ThreadVoxelsMiner()");
+        PrintException(&e, "ThreadRevolutionVRMiner()");
     } catch (...) {
         vnThreadsRunning[THREAD_MINER]--;
-        PrintException(NULL, "ThreadVoxelsMiner()");
+        PrintException(NULL, "ThreadRevolutionVRMiner()");
     }
     nHPSTimerStart = 0;
     if (vnThreadsRunning[THREAD_MINER] == 0)
         dHashesPerSec = 0;
-    printf("ThreadVoxelsMiner exiting, %d threads remaining\n", vnThreadsRunning[THREAD_MINER]);
+    printf("ThreadRevolutionVRMiner exiting, %d threads remaining\n", vnThreadsRunning[THREAD_MINER]);
 }
 
 
@@ -3987,11 +3987,11 @@ void GenerateBitcoins(bool fGenerate, CWallet* pwallet)
         if (fLimitProcessors && nProcessors > nLimitProcessors)
             nProcessors = nLimitProcessors;
         int nAddThreads = nProcessors - vnThreadsRunning[THREAD_MINER];
-        printf("Starting %d VoxelsMiner threads\n", nAddThreads);
+        printf("Starting %d RevolutionVRMiner threads\n", nAddThreads);
         for (int i = 0; i < nAddThreads; i++)
         {
-            if (!CreateThread(ThreadVoxelsMiner, pwallet))
-                printf("Error: CreateThread(ThreadVoxelsMiner) failed\n");
+            if (!CreateThread(ThreadRevolutionVRMiner, pwallet))
+                printf("Error: CreateThread(ThreadRevolutionVRMiner) failed\n");
             Sleep(10);
         }
     }

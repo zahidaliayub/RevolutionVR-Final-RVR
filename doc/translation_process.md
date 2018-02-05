@@ -7,18 +7,18 @@ handle those translations.
 Files and Folders
 -----------------
 
-### voxels-qt.pro
+### RevolutionVR-qt.pro
 
 This file takes care of generating `.qm` files from `.ts` files. It is mostly
 automated.
 
-### src/qt/voxels.qrc
+### src/qt/RevolutionVR.qrc
 
 This file must be updated whenever a new translation is added. Please note that
 files must end with `.qm`, not `.ts`.
 
     <qresource prefix="/translations">
-        <file alias="en">locale/voxels_en.qm</file>
+        <file alias="en">locale/RevolutionVR_en.qm</file>
         ...
     </qresource>
 
@@ -26,24 +26,24 @@ files must end with `.qm`, not `.ts`.
 
 This directory contains all translations. Filenames must adhere to this format:
 
-    voxels_xx_YY.ts or voxels_xx.ts
+    RevolutionVR_xx_YY.ts or RevolutionVR_xx.ts
 
-#### voxels_en.ts (Source file)
+#### RevolutionVR_en.ts (Source file)
 
-`src/qt/locale/voxels_en.ts` is treated in a special way. It is used as the
+`src/qt/locale/RevolutionVR_en.ts` is treated in a special way. It is used as the
 source for all other translations. Whenever a string in the code is changed
 this file must be updated to reflect those changes. This can be accomplished
 by running `lupdate` (included in the Qt SDK). Also, a custom script is used
 to extract strings from the non-Qt parts:
 
     python share/qt/extract_strings_qt.py
-    lupdate voxels-qt.pro -no-obsolete -locations none -ts src/qt/locale/voxels_en.ts
+    lupdate RevolutionVR-qt.pro -no-obsolete -locations none -ts src/qt/locale/RevolutionVR_en.ts
     
 ##### Handling of plurals in the source file
 
 When new plurals are added to the source file, it's important to do the following steps:
 
-1. Open voxels_en.ts in Qt Linguist (also included in the Qt SDK)
+1. Open RevolutionVR_en.ts in Qt Linguist (also included in the Qt SDK)
 2. Search for `%n`, which will take you to the parts in the translation that use plurals
 3. Look for empty `English Translation (Singular)` and `English Translation (Plural)` fields
 4. Add the appropriate strings for the singular and plural form of the base string
@@ -59,7 +59,7 @@ in Transifex and can be translated.
 
 To create the pull-request you have to do:
 
-    git add src/qt/voxelsstrings.cpp src/qt/locale/voxels_en.ts
+    git add src/qt/RevolutionVRstrings.cpp src/qt/locale/RevolutionVR_en.ts
     git commit
 
 Syncing with Transifex
@@ -67,7 +67,7 @@ Syncing with Transifex
 
 We are using https://transifex.com as a frontend for translating the client.
 
-https://www.transifex.com/projects/p/voxels/resource/tx/
+https://www.transifex.com/projects/p/RevolutionVR/resource/tx/
 
 The "Transifex client" (see: http://help.transifex.com/features/client/)
 will help with fetching new translations from Transifex. Use the following
@@ -78,9 +78,9 @@ config to be able to connect with the client:
     [main]
     host = https://www.transifex.com
 
-    [voxels.tx]
-    file_filter = src/qt/locale/voxels_<lang>.ts
-    source_file = src/qt/locale/voxels_en.ts
+    [RevolutionVR.tx]
+    file_filter = src/qt/locale/RevolutionVR_<lang>.ts
+    source_file = src/qt/locale/RevolutionVR_en.ts
     source_lang = en
     
 ### .tx/config (for Windows)
@@ -88,9 +88,9 @@ config to be able to connect with the client:
     [main]
     host = https://www.transifex.com
 
-    [voxels.tx]
-    file_filter = src\qt\locale\voxels_<lang>.ts
-    source_file = src\qt\locale\voxels_en.ts
+    [RevolutionVR.tx]
+    file_filter = src\qt\locale\RevolutionVR_<lang>.ts
+    source_file = src\qt\locale\RevolutionVR_en.ts
     source_lang = en
 
 It is also possible to directly download new translations one by one from the Transifex website.
@@ -98,6 +98,6 @@ It is also possible to directly download new translations one by one from the Tr
 ### Fetching new translations
 
 1. `tx pull -a`
-2. update `src/qt/voxels.qrc` manually or via
-   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(voxels_\(.*\)\).ts/<file alias="\2">locale/\1.qm<\/file>/'`
+2. update `src/qt/RevolutionVR.qrc` manually or via
+   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(RevolutionVR_\(.*\)\).ts/<file alias="\2">locale/\1.qm<\/file>/'`
 3. `git add` new translations from `src/qt/locale/`

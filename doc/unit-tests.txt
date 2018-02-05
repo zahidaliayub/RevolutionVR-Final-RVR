@@ -1,13 +1,13 @@
 Compiling/running bitcoind unit tests
 ------------------------------------
 
-voxelsd unit tests are in the src/test/ directory; they
+RevolutionVRd unit tests are in the src/test/ directory; they
 use the Boost::Test unit-testing framework.
 
 To compile and run the tests:
 cd src
-make -f makefile.unix test_voxels  # Replace makefile.unix if you're not on unix
-./test_voxels   # Runs the unit tests
+make -f makefile.unix test_RevolutionVR  # Replace makefile.unix if you're not on unix
+./test_RevolutionVR   # Runs the unit tests
 
 If all tests succeed the last line of output will be:
 *** No errors detected
@@ -15,19 +15,19 @@ If all tests succeed the last line of output will be:
 To add more tests, add BOOST_AUTO_TEST_CASE's to the existing
 .cpp files in the test/ directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE's (the makefiles are
-set up to add test/*.cpp to test_voxels automatically).
+set up to add test/*.cpp to test_RevolutionVR automatically).
 
 
-Compiling/running Voxels-Qt unit tests
+Compiling/running RevolutionVR-Qt unit tests
 ---------------------------------------
 
-Voxels-Qt unit tests are in the src/qt/test/ directory; they
+RevolutionVR-Qt unit tests are in the src/qt/test/ directory; they
 use the Qt unit-testing framework.
 
 To compile and run the tests:
-qmake voxels-qt.pro VOXELS_QT_TEST=1
+qmake RevolutionVR-qt.pro RevolutionVR_QT_TEST=1
 make
-./voxels-qt_test
+./RevolutionVR-qt_test
 
 To add more tests, add them to the src/qt/test/ directory,
-the src/qt/test/test_main.cpp file, and voxels-qt.pro.
+the src/qt/test/test_main.cpp file, and RevolutionVR-qt.pro.

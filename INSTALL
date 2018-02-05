@@ -1,9 +1,9 @@
-Building Voxels
+Building RevolutionVR
 
-See doc/readme-qt.rst for instructions on building Voxels-QT,
+See doc/readme-qt.rst for instructions on building RevolutionVR-QT,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of Voxels.
+implementation of RevolutionVR.
 
 See doc/build-*.txt for instructions on building featehrcoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of Voxels.
+implementation of RevolutionVR.

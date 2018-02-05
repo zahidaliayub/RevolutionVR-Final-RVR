@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2012 Litecoin Developers
-// Copyright (c) 2013-2015 Voxels Developers
+// Copyright (c) 2013-2015 RevolutionVR Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -295,14 +295,14 @@ void ThreadIRCSeed2(void* parg)
         }
         
         if (fTestNet) {
-            Send(hSocket, "JOIN #voxelsTEST3\r");
-            Send(hSocket, "WHO #voxelsTEST3\r");
+            Send(hSocket, "JOIN #RevolutionVRTEST3\r");
+            Send(hSocket, "WHO #RevolutionVRTEST3\r");
         } else {
-            // randomly join #voxels00-#voxels99
+            // randomly join #RevolutionVR00-#RevolutionVR99
             int channel_number = GetRandInt(100);
-            channel_number = 0; // Voxels: for now, just use one channel
-            Send(hSocket, strprintf("JOIN #voxels%02d\r", channel_number).c_str());
-            Send(hSocket, strprintf("WHO #voxels%02d\r", channel_number).c_str());
+            channel_number = 0; // RevolutionVR: for now, just use one channel
+            Send(hSocket, strprintf("JOIN #RevolutionVR%02d\r", channel_number).c_str());
+            Send(hSocket, strprintf("WHO #RevolutionVR%02d\r", channel_number).c_str());
         }
 
         int64 nStart = GetTime();

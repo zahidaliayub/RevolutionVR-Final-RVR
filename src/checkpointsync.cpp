@@ -2,20 +2,20 @@
 // Copyright (c) 2013 Primecoin developers
 //
 // A perpetual use license of this advanced checkpoint technology is granted
-// to voxels by Sunny King on behalf of PPCoin developers and Primecoin
+// to RevolutionVR by Sunny King on behalf of PPCoin developers and Primecoin
 // developers.
 //
 // Permission is hereby granted to any person obtaining a copy of the advanced
-// checkpoint technology, for perpetual use in voxels network, including
+// checkpoint technology, for perpetual use in RevolutionVR network, including
 // the rights to use, copy, modify, merge, publish, distribute, subject to the
 // following conditions:
 //
 // a) This license is not transferrable, no sublicense, and applies to
-//    voxels only.
+//    RevolutionVR only.
 // b) The above copyright notice and this permission notice shall be included
 //    in all copies of source code distributions.
 //
-// Voxels is waived from displaying the above copyright notice in
+// RevolutionVR is waived from displaying the above copyright notice in
 // 'About' for the inclusion of advanced checkpoint technology. Reference
 // in file 'COPYING' is appreciated but not required.
 //

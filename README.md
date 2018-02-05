@@ -1,23 +1,23 @@
 <a href="http://i.imgur.com/E8ESrsq.png"><img src="http://i.imgur.com/E8ESrsq.png" title="" /></a>
 
 
-VOXELS (VOX)
+RevolutionVR (RVR)
 ===========
 
-www.voxelus.com/
+www.revolutionvr.live/
 
-What is Voxels?
+What is RevolutionVR?
 ----------------
 
-Voxels is an experimental in game digital currency created for Voxelus users. 
-Voxels allows for instant payments to anyone, anywhere in the world. 
-Voxels was built on Litcoin core with modifications.
-Voxels uses peer-to-peer technology to operate with no central authority.
+RevolutionVR is an experimental in game digital currency created for RevolutionVR users. 
+RevolutionVR allows for instant payments to anyone, anywhere in the world. 
+RevolutionVR was built on Litcoin core with modifications.
+RevolutionVR uses peer-to-peer technology to operate with no central authority.
 Managing transactions and issuing money are carried
-out collectively by the network. Voxels Core is the name of the source
+out collectively by the network. RevolutionVR Core is the name of the source
 software which enables the use of this currency.
 
-For more information about Voxelus, visit www.voxelus.com/
+For more information about RevolutionVR, visit www.revolutionvr.live/
 
 Specs
 -----
@@ -39,15 +39,15 @@ P2P Port 9538
 License
 -------
 
-Voxels Core is released under the terms of the MIT license.
+RevolutionVR Core is released under the terms of the MIT license.
 See http://opensource.org/licenses/MIT/ for more information.
 
 Development process
 -------------------
 
-Futher Developers work is handled by Michael Wheeler, Martin Repetto & Jonathan Heald alongside the Voxelus Team, Email community@voxelus.com
+Futher Developers work is handled by Jim Blasko (jimblasko@yahoo.com) and the RevolutionVR Team. 
 
-If it is a simple/trivial/non-controversial change, then one of the Voxels
+If it is a simple/trivial/non-controversial change, then one of the RevolutionVR
 development team members simply pulls it.
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
@@ -56,7 +56,7 @@ completely stable.
 Testing
 -------
 
-Testing and code review is handled by Blaskoshi and Voxels Team.
+Testing and code review is handled by Blaskoshi and RevolutionVR Team.
 
 
 Translations
@@ -65,7 +65,7 @@ Translations
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-Translations may be converted to Voxels periodically.
+Translations may be converted to RevolutionVR periodically.
 
 Development tips and tricks
 ---------------------------
@@ -89,7 +89,7 @@ to see it.
 
 **DEBUG_LOCKORDER**
 
-Voxels Core is a multithreaded application, and deadlocks or other multithreading bugs
+RevolutionVR Core is a multithreaded application, and deadlocks or other multithreading bugs
 can be very difficult to track down. Compiling with -DDEBUG_LOCKORDER (configure
 CXXFLAGS="-DDEBUG_LOCKORDER -g") inserts run-time checks to keep track of which locks
 are held, and adds warnings to the debug.log file if inconsistencies are detected.

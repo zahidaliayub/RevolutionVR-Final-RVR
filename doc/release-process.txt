@@ -1,7 +1,7 @@
 * update translations (ping tcatm on IRC for now)
 
 * update (commit) version in sources
-  voxels-qt.pro
+  RevolutionVR-qt.pro
   src/version.h
   share/setup.nsi
   doc/README*
@@ -79,27 +79,27 @@
   Gavin also had trouble with the macports py27-appscript package; he
   ended up installing a version that worked with: /usr/bin/easy_install-2.7 appscript
 
-  qmake RELEASE=1 USE_UPNP=1 USE_QRCODE=1 voxels-qt.pro
+  qmake RELEASE=1 USE_UPNP=1 USE_QRCODE=1 RevolutionVR-qt.pro
   make
   export QTDIR=/opt/local/share/qt4  # needed to find translations/qt_*.qm files
   T=$(contrib/qt_translations.py $QTDIR/translations src/qt/locale)
-  python2.7 contrib/macdeploy/macdeployqtplus Voxels-Qt.app -add-qt-tr $T -dmg -fancy contrib/macdeploy/fancy.plist
+  python2.7 contrib/macdeploy/macdeployqtplus RevolutionVR-Qt.app -add-qt-tr $T -dmg -fancy contrib/macdeploy/fancy.plist
 
  Build output expected:
-  Voxels-Qt.dmg
+  RevolutionVR-Qt.dmg
 
 * upload builds to SourceForge
 
 * create SHA256SUMS for builds, and PGP-sign it
 
-* update voxelus.com version
+* update revolutionvr.live version
   make sure all OS download links go to the right versions
 
 * update forum version
 
 * update wiki download links
 
-* update wiki changelog: https://en.voxels.it/wiki/Changelog
+* update wiki changelog: https://en.RevolutionVR.it/wiki/Changelog
 
 * Commit your signature to gitian.sigs:
   pushd gitian.sigs
@@ -113,7 +113,7 @@
 
 * After 3 or more people have gitian-built, repackage gitian-signed zips:
 
-  * From a directory containing voxels source, gitian.sigs and gitian zips
+  * From a directory containing RevolutionVR source, gitian.sigs and gitian zips
    export VERSION=0.5.1
    mkdir bitcoin-${VERSION}-linux-gitian
    pushd bitcoin-${VERSION}-linux-gitian

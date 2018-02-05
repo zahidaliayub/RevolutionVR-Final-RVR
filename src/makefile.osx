@@ -3,24 +3,24 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-# Mac OS X makefile for voxels
+# Mac OS X makefile for RevolutionVR
 # Originally by Laszlo Hanyecz (solar@heliacal.net)
 
 CXX=llvm-g++
 DEPSDIR=/usr/local/Cellar
-BOOSTDIR=/Users/jonn4y/git/MindCoin/boost_1_48_0/
+BERKDIR=/usr/local/opt
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)"/obj \
  -I"$(DEPSDIR)/include" \
  -I"$(DEPSDIR)/opt/openssl/include" \
- -I"$(DEPSDIR)/BerkeleyDB.4.8/include"
+ -I"$(BERKDIR)/berkeley-db@4/include"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
  -L"$(DEPSDIR)/opt/openssl/lib" \
- -L"$(DEPSDIR)/BerkeleyDB.4.8/lib"
+ -L"$(BERKDIR)/berkeley-db@4/lib"
 
 USE_UPNP:=1
 
@@ -29,15 +29,15 @@ LIBS= -dead_strip
 TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 
 ifdef STATIC
-# Build STATIC if you are redistributing the voxelsd binary
+# Build STATIC if you are redistributing the RevolutionVRd binary
 TESTLIBS += \
- $(BOOSTDIR)/lib/libboost_unit_test_framework-mt.a
+ $(DEPSDIR)/lib/libboost_unit_test_framework-mt.a
 LIBS += \
- $(DEPSDIR)/BerkeleyDB.4.8/lib/libdb_cxx-4.8.a \
- $(BOOSTDIR)/lib/libboost_system-mt.a \
- $(BOOSTDIR)/lib/libboost_filesystem-mt.a \
- $(BOOSTDIR)/lib/libboost_program_options-mt.a \
- $(BOOSTDIR)/lib/libboost_thread-mt.a \
+ $(BERKDIR)/berkeley-db@4/lib/libdb_cxx-4.8.a \
+ $(DEPSDIR)/lib/libboost_system-mt.a \
+ $(DEPSDIR)/lib/libboost_filesystem-mt.a \
+ $(DEPSDIR)/lib/libboost_program_options-mt.a \
+ $(DEPSDIR)/lib/libboost_thread-mt.a \
  $(DEPSDIR)/opt/openssl/lib/libssl.a \
  $(DEPSDIR)/opt/openssl/lib/libcrypto.a \
  -lz
@@ -62,7 +62,7 @@ ifdef RELEASE
 # Compile for maximum compatibility and smallest size.
 # This requires that dependencies are compiled
 # the same way.
-CFLAGS = -mmacosx-version-min=10.5 -arch i386 -O3
+CFLAGS = -mmacosx-version-min=10.5 -O3
 else
 CFLAGS = -g
 endif
@@ -107,7 +107,7 @@ else
 endif
 endif
 
-all: voxelsd
+all: RevolutionVRd
 
 # auto-generated dependencies:
 -include obj/*.P
@@ -132,7 +132,7 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-voxelsd: $(OBJS:obj/%=obj/%)
+RevolutionVRd: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -144,11 +144,11 @@ obj-test/%.o: test/%.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-test_voxels: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+test_RevolutionVR: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) $(TESTLIBS)
 
 clean:
-	-rm -f voxelsd test_voxels
+	-rm -f RevolutionVRd test_RevolutionVR
 	-rm -f obj/*.o
 	-rm -f obj-test/*.o
 	-rm -f obj/*.P
