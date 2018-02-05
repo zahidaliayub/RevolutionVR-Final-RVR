@@ -1,5 +1,3 @@
-<a href="http://i.imgur.com/E8ESrsq.png"><img src="http://i.imgur.com/E8ESrsq.png" title="" /></a>
-
 
 RevolutionVR (RVR)
 ===========
